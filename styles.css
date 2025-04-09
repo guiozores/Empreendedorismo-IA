@@ -1,0 +1,1213 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f0f0f0;
+  color: #333;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.presentation {
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  background-color: #fff;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  transform: translateX(100%);
+  transition: transform 0.5s ease-in-out;
+  overflow-y: auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.slide.active {
+  transform: translateX(0);
+  z-index: 1;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 8px;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
+  color: #3498db;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 3px;
+  background-color: #3498db;
+}
+
+h2.optimistic {
+  color: #27ae60;
+}
+
+h2.optimistic::after {
+  background-color: #27ae60;
+}
+
+h2.pessimistic {
+  color: #e74c3c;
+}
+
+h2.pessimistic::after {
+  background-color: #e74c3c;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #2c3e50;
+}
+
+h4 {
+  font-size: 1.2rem;
+  margin-bottom: 0.8rem;
+  color: #2c3e50;
+}
+
+p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+ul {
+  margin-left: 2rem;
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  line-height: 1.5;
+}
+
+.title-slide {
+  text-align: center;
+  background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  color: white;
+  padding: 3rem;
+  border-radius: 10px;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.title-slide h1,
+.title-slide h2 {
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.title-slide h2::after {
+  background-color: white;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin: 1rem 0 2rem;
+}
+
+.author {
+  margin-top: 3rem;
+  font-style: italic;
+}
+
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 1rem;
+}
+
+.navigation {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.7);
+  padding: 0.5rem 1rem;
+  border-radius: 30px;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+#current-slide,
+#total-slides {
+  color: white;
+  font-size: 1rem;
+}
+
+.concept-box,
+.solution-box,
+.conclusion-box {
+  background-color: #f8f9fa;
+  border-left: 4px solid #3498db;
+  padding: 1rem;
+  border-radius: 0 8px 8px 0;
+  margin: 1.5rem 0;
+}
+
+.scenario-description {
+  background-color: rgba(245, 245, 245, 0.8);
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.decolonial-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.decolonial-item {
+  background-color: #f0f8ff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  border-left: 3px solid #3498db;
+}
+
+.references ul {
+  list-style-type: none;
+  margin-left: 0;
+}
+
+.references li {
+  border-bottom: 1px solid #eee;
+  padding-bottom: 0.8rem;
+  margin-bottom: 0.8rem;
+  font-size: 0.9rem;
+}
+
+.centered-content {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.final-message {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #2c3e50;
+}
+
+/* ==== NOVAS ANIMAÇÕES EXTRAVAGANTES ==== */
+
+/* Logotipo animado */
+.animated-logo {
+  width: 100px;
+  height: 100px;
+  background: conic-gradient(
+    from 45deg,
+    #ff0000,
+    #ff8000,
+    #ffff00,
+    #00ff00,
+    #00ffff,
+    #0000ff,
+    #8000ff,
+    #ff0080,
+    #ff0000
+  );
+  margin: 0 auto 2rem;
+  border-radius: 50%;
+  animation: spin 8s linear infinite, pulse 2s ease-in-out infinite alternate;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.animated-logo::before {
+  content: "AI";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Fade in animation */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards;
+}
+
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease-in forwards 0.5s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Slide up animation */
+.slide-up {
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards;
+}
+
+.slide-up-delay {
+  transform: translateY(50px);
+  opacity: 0;
+  animation: slideUp 0.8s ease forwards 0.3s;
+}
+
+@keyframes slideUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Staggered list animation */
+.staggered-list li {
+  opacity: 0;
+  transform: translateX(-20px);
+}
+
+.staggered-list li:nth-child(1) {
+  animation: slideIn 0.5s ease forwards 0.2s;
+}
+
+.staggered-list li:nth-child(2) {
+  animation: slideIn 0.5s ease forwards 0.4s;
+}
+
+.staggered-list li:nth-child(3) {
+  animation: slideIn 0.5s ease forwards 0.6s;
+}
+
+.staggered-list li:nth-child(4) {
+  animation: slideIn 0.5s ease forwards 0.8s;
+}
+
+@keyframes slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Grow in animation */
+.grow-in {
+  transform: scale(0.8);
+  opacity: 0;
+  animation: growIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards 0.5s;
+}
+
+@keyframes growIn {
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Floating animation */
+.floating {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+/* Pulse animation */
+.pulse {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Shadow pulse */
+.shadow-pulse {
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.4);
+  animation: shadowPulse 2s infinite;
+}
+
+@keyframes shadowPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 20px rgba(52, 152, 219, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 152, 219, 0);
+  }
+}
+
+/* Flip card animation */
+.flip-card {
+  perspective: 1000px;
+  height: 250px;
+  cursor: pointer;
+  background: transparent;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.flip-card-front {
+  background-color: #f0f8ff;
+  border-left: 3px solid #3498db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.flip-card-front h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+.flip-card-back {
+  background-color: #3498db;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+/* Typing effect */
+.typing-effect {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 3px solid #3498db;
+  width: 0;
+  animation: typing 4s steps(50, end) forwards, blink 0.8s step-end infinite;
+  margin: 2rem auto;
+  max-width: fit-content;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #3498db;
+  }
+}
+
+/* Flip in animation */
+.flip-in {
+  opacity: 0;
+  animation: flipIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes flipIn {
+  from {
+    transform: perspective(400px) rotateX(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: perspective(400px) rotateX(0);
+    opacity: 1;
+  }
+}
+
+/* Highlight list animation */
+.highlight-list li {
+  position: relative;
+  padding-left: 10px;
+  margin-bottom: 15px;
+  transition: transform 0.3s;
+}
+
+.highlight-list li:hover {
+  transform: translateX(10px);
+}
+
+.highlight {
+  position: relative;
+  color: #3498db;
+  font-weight: bold;
+}
+
+.highlight::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  bottom: -2px;
+  left: 0;
+  background-color: #3498db;
+  visibility: hidden;
+  transform: scaleX(0);
+  transition: all 0.3s ease-in-out;
+}
+
+.highlight-list li:hover .highlight::after {
+  visibility: visible;
+  transform: scaleX(1);
+}
+
+/* Desaturate effect */
+.desaturate {
+  filter: grayscale(70%);
+  transition: filter 0.5s;
+}
+
+.desaturate:hover {
+  filter: grayscale(0%);
+}
+
+/* ==== SUPORTE A IMAGENS ==== */
+.image-text-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  align-items: center;
+}
+
+.side-image {
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.slide-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.5s;
+}
+
+.slide-image:hover {
+  transform: scale(1.05);
+}
+
+.image-container {
+  margin: 1.5rem 0;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.full-width {
+  width: 100%;
+  height: 250px;
+}
+
+.slide-image-wide {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.centered-image {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.medium-image {
+  width: 300px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.card-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+/* Nova classe para conteúdo full-width substituindo o layout com imagens */
+.full-width-content {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+/* Melhorando margens e espaçamento para compensar ausência de imagens */
+.flip-card-front {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.flip-card-front h3 {
+  margin: 0;
+  font-size: 1.6rem;
+}
+
+/* ==== ESTILOS ESPECÍFICOS PARA SLIDES ==== */
+
+/* Slide 1 - Título: Já está bem estilizado */
+
+/* Slide 4 - Cenário Otimista */
+#slide4 {
+  background: linear-gradient(
+    120deg,
+    rgba(144, 238, 144, 0.1),
+    rgba(0, 128, 0, 0.05)
+  );
+}
+
+#slide4 .content {
+  border-top: 5px solid #27ae60;
+  border-bottom: 5px solid #27ae60;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+#slide4 .scenario-description {
+  position: relative;
+  border-left: 4px solid #27ae60;
+  padding-left: 2rem;
+}
+
+#slide4 .scenario-description::before {
+  content: "2040";
+  position: absolute;
+  left: -20px;
+  top: -15px;
+  background-color: #27ae60;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  transform: rotate(-5deg);
+}
+
+/* Slide 5 - BRAIA */
+#slide5 {
+  background: linear-gradient(
+    120deg,
+    rgba(173, 216, 230, 0.2),
+    rgba(135, 206, 250, 0.1)
+  );
+}
+
+#slide5 .solution-box {
+  position: relative;
+  overflow: visible;
+}
+
+#slide5 .solution-box::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(39, 174, 96, 0.05),
+    rgba(39, 174, 96, 0.05) 10px,
+    rgba(255, 255, 255, 0.5) 10px,
+    rgba(255, 255, 255, 0.5) 20px
+  );
+  z-index: -1;
+  border-radius: 8px;
+  transform: rotate(-1deg);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Logo do BRAIA */
+.braia-logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+.braia-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.braia-logo::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.braia-inner {
+  position: relative;
+  z-index: 2;
+  color: #27ae60;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 0.9;
+}
+
+.braia-inner .small {
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+  margin-top: 0.3rem;
+}
+
+.braia-circuit {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.circuit-line {
+  position: absolute;
+  background-color: rgba(39, 174, 96, 0.2);
+}
+
+.circuit-line:nth-child(1) {
+  width: 100px;
+  height: 2px;
+  top: 30px;
+  left: 20px;
+  transform: rotate(30deg);
+}
+
+.circuit-line:nth-child(2) {
+  width: 80px;
+  height: 2px;
+  top: 60px;
+  left: -10px;
+  transform: rotate(-15deg);
+}
+
+.circuit-line:nth-child(3) {
+  width: 120px;
+  height: 2px;
+  bottom: 40px;
+  left: 10px;
+  transform: rotate(45deg);
+}
+
+.circuit-dot {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background-color: #27ae60;
+  border-radius: 50%;
+}
+
+.circuit-dot:nth-child(4) {
+  top: 29px;
+  left: 40px;
+}
+
+.circuit-dot:nth-child(5) {
+  top: 59px;
+  left: 65px;
+}
+
+.circuit-dot:nth-child(6) {
+  bottom: 39px;
+  right: 30px;
+}
+
+.braia-logo:hover .circuit-dot {
+  animation: pulse 1.5s infinite alternate;
+}
+
+/* Ajuste para nome da BRAIA em português */
+#slide5 h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  background: linear-gradient(
+    90deg,
+    rgba(39, 174, 96, 0.1),
+    transparent,
+    rgba(39, 174, 96, 0.1)
+  );
+  padding: 0.5rem 0;
+  border-radius: 4px;
+}
+
+/* Slide 6 - Cenário Pessimista */
+#slide6 {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 99, 71, 0.1),
+    rgba(178, 34, 34, 0.05)
+  );
+}
+
+#slide6 .content {
+  border-top: 5px solid #e74c3c;
+  border-bottom: 5px solid #e74c3c;
+  background-color: rgba(255, 255, 255, 0.95);
+}
+
+#slide6 .scenario-description {
+  position: relative;
+  border-left: 4px solid #e74c3c;
+  padding-left: 2rem;
+}
+
+#slide6 .scenario-description::before {
+  content: "2040";
+  position: absolute;
+  left: -20px;
+  top: -15px;
+  background-color: #e74c3c;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-weight: bold;
+  transform: rotate(-5deg);
+}
+
+/* Slide 7 - Mitigação */
+#slide7 {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 99, 71, 0.05),
+    rgba(178, 34, 34, 0.02)
+  );
+}
+
+#slide7 .solution-box::after {
+  content: "⚖️";
+  font-size: 24px;
+  position: absolute;
+  right: 20px;
+  top: -15px;
+}
+
+/* Slide 8 - Perspectivas Múltiplas */
+#slide8 {
+  background-image: radial-gradient(
+      circle at top right,
+      rgba(52, 152, 219, 0.1) 0%,
+      transparent 70%
+    ),
+    radial-gradient(
+      circle at bottom left,
+      rgba(155, 89, 182, 0.1) 0%,
+      transparent 70%
+    );
+}
+
+#slide8 .flip-card {
+  transition: transform 0.3s ease;
+}
+
+#slide8 .flip-card:hover {
+  transform: translateY(-10px);
+}
+
+#slide8 .flip-card-front {
+  background-size: 30px 30px;
+  background-image: linear-gradient(
+      to right,
+      rgba(52, 152, 219, 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(52, 152, 219, 0.05) 1px, transparent 1px);
+}
+
+/* Específico para cada card */
+#slide8 .flip-card:nth-child(1) .flip-card-front {
+  border-top: 3px solid #3498db;
+  border-left: 3px solid #3498db;
+}
+
+#slide8 .flip-card:nth-child(2) .flip-card-front {
+  border-top: 3px solid #9b59b6;
+  border-left: 3px solid #9b59b6;
+}
+
+#slide8 .flip-card:nth-child(3) .flip-card-front {
+  border-top: 3px solid #f1c40f;
+  border-left: 3px solid #f1c40f;
+}
+
+#slide8 .flip-card:nth-child(4) .flip-card-front {
+  border-top: 3px solid #1abc9c;
+  border-left: 3px solid #1abc9c;
+}
+
+#slide8 .flip-card:nth-child(1) .flip-card-back {
+  background-color: #3498db;
+}
+
+#slide8 .flip-card:nth-child(2) .flip-card-back {
+  background-color: #9b59b6;
+}
+
+#slide8 .flip-card:nth-child(3) .flip-card-back {
+  background-color: #f1c40f;
+  color: #333;
+}
+
+#slide8 .flip-card:nth-child(4) .flip-card-back {
+  background-color: #1abc9c;
+}
+
+/* Slide 9 - Conclusão */
+#slide9 {
+  background: linear-gradient(
+    to bottom,
+    rgba(52, 152, 219, 0.05),
+    rgba(52, 152, 219, 0.1)
+  );
+}
+
+#slide9 .conclusion-box {
+  border-left: 4px solid #3498db;
+  border-right: 4px solid #3498db;
+  border-radius: 0 0 8px 8px;
+  position: relative;
+}
+
+#slide9 .conclusion-box::before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30px;
+  height: 30px;
+  background-color: #3498db;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+}
+
+/* Responsividade para estilos específicos */
+@media (max-width: 768px) {
+  .braia-logo {
+    width: 120px;
+    height: 120px;
+  }
+
+  .braia-logo::before {
+    width: 110px;
+    height: 110px;
+  }
+
+  .braia-inner {
+    font-size: 2rem;
+  }
+
+  .braia-circuit {
+    width: 110px;
+    height: 110px;
+  }
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 768px) {
+  .two-columns,
+  .decolonial-grid,
+  .image-text-container {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .content {
+    padding: 1rem;
+  }
+
+  .side-image {
+    margin-bottom: 1.5rem;
+  }
+
+  .slide-image,
+  .medium-image {
+    height: 200px;
+  }
+
+  .image-container.full-width {
+    height: 180px;
+  }
+}
+
+/* Estilo para citações de referências nos slides */
+.reference-citation {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px dashed rgba(52, 152, 219, 0.3);
+  font-size: 0.85rem;
+  color: #666;
+  font-style: italic;
+}
+
+#slide4 .reference-citation {
+  border-top-color: rgba(39, 174, 96, 0.3);
+}
+
+#slide6 .reference-citation,
+#slide7 .reference-citation {
+  border-top-color: rgba(231, 76, 60, 0.3);
+}
+
+/* Ajuste para slide 3 */
+#slide3 .concept-box {
+  margin-bottom: 0.5rem;
+}
+
+/* Estilos para alternância entre PT e EN */
+.language-toggle {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.toggle-button {
+  padding: 5px 15px;
+  margin: 0 5px;
+  background-color: #f8f9fa;
+  border: 2px solid #ddd;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.toggle-button.active {
+  background-color: #27ae60;
+  color: white;
+  border-color: #27ae60;
+}
+
+.lang-content {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.lang-content.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Logo container comum */
+.logo-container {
+  display: flex;
+  justify-content: center;
+  margin: 1.5rem 0;
+}
+
+/* Estilo comum para ambos os logos */
+.braia-logo {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #27ae60, #2ecc71);
+  box-shadow: 0 10px 20px rgba(46, 204, 113, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.braia-logo::before {
+  content: "";
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  background-color: white;
+}
+
+.braia-inner {
+  position: relative;
+  z-index: 2;
+  font-family: "Segoe UI", sans-serif;
+  font-weight: bold;
+  font-size: 2.5rem;
+  text-align: center;
+  line-height: 0.9;
+}
+
+.braia-inner {
+  color: #27ae60;
+}
+
+.braia-circuit {
+  position: absolute;
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.braia-circuit .circuit-line {
+  background-color: rgba(39, 174, 96, 0.2);
+}
+
+.braia-circuit .circuit-dot {
+  background-color: #27ae60;
+}
+
+/* Ajuste para nome em português e inglês */
+#slide5 h3 {
+  text-align: center;
+  margin-bottom: 1.5rem;
+  padding: 0.5rem 0;
+  border-radius: 4px;
+}
+
+/* Ambos os cabeçalhos agora usam fundo verde */
+.pt-version h3,
+.en-version h3 {
+  background: linear-gradient(
+    90deg,
+    rgba(39, 174, 96, 0.1),
+    transparent,
+    rgba(39, 174, 96, 0.1)
+  );
+}
